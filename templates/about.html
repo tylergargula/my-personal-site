@@ -1,33 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset=UTF-8">
-<title>About Me | Tyler Gargula</title>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KNF6C7D');</script>
-<!-- End Google Tag Manager -->
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
     <meta name="description" content="Learn about me, Tyler Gargula and how I combine my passions for Tech SEO and Software Development.">
 <meta name="robots" content="index, follow">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link rel="stylesheet" href="static/assets/css/main.css">
     <link rel="canonical" href="https://www.tylergargula.dev/about">
-
-</head>
-<body class="is-preload">
-
-<!-- Header -->
-
-{% include "header.html" %}
+{% endblock %}
+{% block title %}About Me{% endblock %}
 
 
-<!-- Main Section -->
-<div id="main">
+{% block content %}
+
     <section id="two">
         <h1>Bridging the gap between SEO and Software Development.</h1>
         <p>My recent undertaking of Software Development started late 2020 when I noticed a disconnect between SEO's and
@@ -43,23 +26,5 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </section>
 
 
-    <!-- Form -->
-    {% include "form.html" %}
 
-</div>
-<!-- Footer -->
-
-{% include "footer.html" %}
-
-<!-- Scripts -->
-<script src="../static/assets/js/jquery.min.js"></script>
-<script src="../static/assets/js/browser.min.js"></script>
-<script src="../static/assets/js/breakpoints.min.js"></script>
-<script src="../static/assets/js/util.js"></script>
-<script src="../static/assets/js/main.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-
-</body>
-</html>
+{% endblock %}
