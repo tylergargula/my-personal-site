@@ -1,56 +1,36 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 
-<html>
-<head>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KNF6C7D');</script>
-<!-- End Google Tag Manager -->
-    <meta charset=UTF-8">
-    <title>Tyler Gargula - SEO &amp; Software Development Portfolio</title>
+{% block head %}
+{{ super() }}
+
     <meta name="description" content="Hey, I'm Tyler Gargula - a Tech SEO and Web Developer. Check out a few recent projects and learn more about my background and past work experiences.">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="static/assets/css/main.css">
-    <link rel="canonical" href="https://www.tylergargula.dev">
+    <meta name="robots" content="index, follow">
+        <link rel="canonical" href="https://www.tylergargula.dev">
+{% endblock %}
+{% block title %}Tyler Gargula - SEO &amp; Software Development Portfolio{% endblock %}
 
-</head>
-<body class="is-preload">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNF6C7D"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-
-<!-- Header -->
-
-{% include "header.html" %}
-
-<!-- Main -->
-<div id="main">
-
+{% block content %}
 
     <!-- One -->
+
     <section id="one">
         <header class="major">
-            <h2>I create elevated digital experiences through highly technical and strategic SEO.</h2>
+            <h1>I create elevated digital experiences through highly technical and strategic SEO.</h1>
         </header>
+            </section>
+
 
 
 
     <!-- Two -->
-
+    <section id="two">
         <h2>Recent Work</h2>
         <div class="row">
-            {% for case_study in portfolio[:4]: %}
+            {% for case_study in portfolio: %}
             <article class="col-6 col-12-xsmall work-item">
 
                 <a class="image fit thumb" style="cursor: pointer; outline: 0px;"
-                   href="{{ url_for('show_portfolio', index=case_study.id, path=case_study.url) }}">
+                   href="{{ url_for('show_portfolio', index=case_study.id, path=case_study.url_string) }}">
                     <img
                             src="{{ case_study.image }}"
                             alt="">
@@ -64,29 +44,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="actions">
             <li><a href="{{ url_for('all_work') }}" class="button">All Work</a></li>
         </ul>
-    </section>
+            </section>
 
-    <!-- Three -->
-    {% include "form.html" %}
-    <!-- Four -->
+{% endblock %}
 
 
-</div>
-
-<!-- Footer -->
-
-{% include "footer.html" %}
-
-<!-- Scripts -->
-<script src="static/assets/js/jquery.min.js"></script>
-<script src="/static/assets/js/browser.min.js"></script>
-<script src="static/assets/js/breakpoints.min.js"></script>
-<script src="static/assets/js/util.js"></script>
-<script src="static/assets/js/main.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
 
 
-</body>
-</html>
+
