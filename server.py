@@ -6,6 +6,8 @@ from wtforms import StringField, SubmitField, IntegerField
 from wtforms.validators import DataRequired, Optional
 from flask_wtf import FlaskForm
 from datetime import date
+from portoflio import Portfolio
+import requests
 import smtplib
 import os
 
@@ -18,17 +20,31 @@ app.config['SECRET_KEY'] = os.environ['SECRET_KEY_CODE']
 ckeditor = CKEditor(app)
 
 # CONNECT TO DB
-if os.environ['DATABASE_URL'] == None:
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-else:
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///client_portfolio.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///client_portfolio.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 Bootstrap(app)
 current_year = date.today().year
 
+portfolio = requests.get("https://api.npoint.io/78c54b6b0ae07e92852f").json()
 
+portfolio_objects = []
+for client in portfolio:
+    portfolio_object = Portfolio(
+        client["id"],
+        client["title"].split(" - ")[0].replace(" ", "-").lower(),
+        client["title"],
+        client["subtitle"],
+        client["tagline"],
+        client["image"],
+        client["body"],
+        client["cms"],
+        client["urlsMigrated"],
+        client["services"],
+        client["industry"]
+    )
+    portfolio_objects.append(portfolio_object)
 
 
 # CONFIGURE TABLE
@@ -45,7 +61,7 @@ class Client(db.Model):
     url_string = db.Column(db.String(250), nullable=True)
 
 
-db.create_all()
+# db.create_all()
 
 
 # WTForm
